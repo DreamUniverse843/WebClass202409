@@ -1,8 +1,75 @@
 <!DOCTYPE html>
 <head>
-    <meta charset="UTF-8">
-    <title>网页设计基础课索引</title>
+  <meta charset="UTF-8" />
+  <title>网页设计基础课索引</title>
+  <link rel="stylesheet" href="/css/main.css" type="text/css">
+  <script>
+    var classTotal = 3
+    var GithubRepo = "/WebClass202409"
+    function getGithubLink(){
+        /*if(value = 1)
+        {
+            console.info("All links has been replaced.")
+        }
+        else
+        */ 
+        for(i=1;i<=classTotal;i++)
+        {
+            if(i<10)
+            {
+                var textID = "class0" + String(i)
+                
+            }
+            else var textID = "class" + String(i)
+            console.info("Replacing " + textID)
+            var baseURL = document.getElementById(textID).getAttribute("href")
+            console.info("baseURL:" + baseURL)
+            document.getElementById(textID).setAttribute("href", GithubRepo + baseURL)
+            document.getElementById(textID).setAttribute("value", 1)
+            console.info("updatedURL:" + baseURL)
+        }
+    }
+    function removeGithubLink()
+    {
+        /*if(value = 0)
+        {
+            console.info("All links has been resetted.")
+        }
+        else*/ for(i=1;i<=classTotal;i++)
+        {
+            if(i<10)
+            {
+                var textID = "class0" + String(i)
+                
+            }
+            else var textID = "class" + String(i)
+            console.info("Replacing " + textID)
+            var baseURL = document.getElementById(textID).getAttribute("href")
+            console.info("baseURL:" + baseURL)
+            console.info("length of baseurl is " + baseURL.length)
+            document.getElementById(textID).setAttribute("href", baseURL.slice(GithubRepo.length + 1,- 1))
+            document.getElementById(textID).setAttribute("value", 0)
+            console.info("updatedURL:" + baseURL)
+        }
+    }
+    
+  </script>
 </head>
 <body>
-    <li><a href="/WebClass202409/20240912/index.html">2024.09.12 01-第一次课</a></li>
+  <h1 class="slidein">2024-2025 秋季学期网页设计基础通识课作业索引</h1>
+  <p class="slidein">
+    23西2 张珅 202311590150
+  </p>
+  <p>
+    <b>主操作区域</b>
+    <form>
+        请选择登录方式:
+        <input type="radio" name="routeradio" value="Ext" id="GithubButton" onclick="getGithubLink()"/>Github
+        <input type="radio" name="routeradio" value="Int" id="CampusButton" onclick="removeGithubLink()"/>校园网
+    </form>
+  </p>
+  <li>
+    <a id="class01" value=0 href="/20240912/index.html">2024.09.12 01-第一次课</a>
+    <a id="class02" value=0 href="/20240926/index.html">2024.09.12 01-第一次课</a>
+  </li>
 </body>
