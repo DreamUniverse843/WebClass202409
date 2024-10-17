@@ -10,11 +10,12 @@
     function getGithubLink() {
       if (String(document.getElementById("classgroup").getAttribute("isLocal")) === "Remote")
       {
-        console.info("All links has been replaced to Github.")
-        alert("All links has been replaced to Github.")
+        console.info("All links has been replaced to Github.\n当前登录方式已设置为：Github")
+        alert("All links has been replaced to Github.\n当前登录方式已设置为：Github")
       }
       else {
         document.getElementById("classgroup").setAttribute("isLocal", "Remote")
+        document.getElementById("classgroupView").innerHTML = "Github"
         for (i = 1; i <= classTotal; i++) {
           if (i < 10) {
             var textID = "class0" + String(i)
@@ -33,11 +34,12 @@
     function removeGithubLink() {
       if (String(document.getElementById("classgroup").getAttribute("isLocal")) === "Local")
       {
-        console.info("All links has been replaced to Local Server.")
-        alert("All links has been replaced to Local Server.")
+        console.info("All links has been replaced to Local Server.\n当前登录方式已设置为：校园网")
+        alert("All links has been replaced to Local Server.\n当前登录方式已设置为：校园网")
       }
       else {
         document.getElementById("classgroup").setAttribute("isLocal", "Local")
+        document.getElementById("classgroupView").innerHTML = "校园网"
         for (i = 1; i <= classTotal; i++) {
           if (i < 10) {
             var textID = "class0" + String(i)
@@ -68,6 +70,7 @@
     请选择登录方式:
     <input type="radio" name="routeradio" value="Ext" id="GithubButton" onclick="getGithubLink()" />Github
     <input type="radio" name="routeradio" value="Int" id="CampusButton" onclick="removeGithubLink()" />校园网
+    当前登录方式为: <b id="classgroupView" isLocal="Local">校园网</b>
   </form>
   </p>
   <p id="classgroup" isLocal="Local">
@@ -75,5 +78,6 @@
     <li><a id="class01" href="/20240912/index.html">2024.09.12 01-第一次课</a></li>
     <li><a id="class02" href="/20240926/index.html">2024.09.26 02-第二次课</a></li>
     <li><a id="class03" href="/20241010/index.html">2024.10.10 03-第三次课</a></li>
+    <li><a id="class03" href="/20241017/index.html">2024.10.17 04-第四次课</a></li>
   </p>
 </body>
