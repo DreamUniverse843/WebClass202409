@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>06-第六次课</title>
+    <script>
+        var writeType = ""
+        var totalAmount = 0
+        var reasonText = ""
+        var reasonAmount = 0
+        function setClothes() {
+            writeType = "衣"
+            console.info("Type: 衣")
+        }
+        function setMeal() {
+            writeType = "食"
+            console.info("Type: 食")
+        }
+        function setTravel() {
+            writeType = "行"
+            console.info("Type: 行")
+        }
+        function setOther() {
+            writeType = "其他"
+            console.info("Type: 其他")
+        }
+        function addRecord(){
+            if(writeType === "")
+            {
+                console.info("Type is undefined. Type = " + String(writeType))
+                alert("类别未选择，请检查")
+            }
+            else
+            {
+                if(document.getElementById("reasonText").value == "" || document.getElementById("reasonAmount").value == "")
+            {
+                console.info("reasonText or reasonAmount is null. reasonText = " + document.getElementById("reasonText").value + ", reasonAmount = " + document.getElementById("reasonAmount").value)
+                alert("事由或价格存在空值，请检查")
+            } else {
+                reasonText = document.getElementById("reasonText").value
+                if(Number.isNaN(Math.floor(document.getElementById("reasonAmount").value)))
+                {
+                    console.info("reasonAmount is not a vaild number. reasonAmount = " + document.getElementById("reasonAmount").value)
+                    alert("价格不合法，请检查")
+                }
+                else
+                {
+                    reasonAmount = Math.floor(document.getElementById("reasonAmount").value)
+                    document.getElementById("output").innerHTML += '【' + writeType + '】事由：' + reasonText + '；价格：' + document.getElementById("reasonAmount").value + '。\<br\>'
+                    totalAmount += reasonAmount
+                    document.getElementById("totalAmount").innerHTML = '合计: ' + String(totalAmount)
+                }
+            }
+            }
+            
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>记账器</h1>
+    <p>
+        <b>主操作区域</b>
+    <form>
+        请选择账务类别：
+        <input type="radio" name="routeradio" id="ClothesButton" onclick="setClothes()" />衣
+        <input type="radio" name="routeradio" id="MealButton" onclick="setMeal()" />食
+        <input type="radio" name="routeradio" id="TravelButton" onclick="setTravel()" />行
+        <input type="radio" name="routeradio" id="OtherButton" onclick="setOther()" />其他
+        <br>
+        事由：
+        <input type="text" id="reasonText">
+        ；价格：
+        <input type="text" id="reasonAmount">
+        <button type="button" onclick="addRecord()">Add</button>
+    </form>
+    </p>
+    <p>
+        <b>账务显示区域</b>
+        <div id="output"></div>
+        <br>
+        <b id="totalAmount">合计: 0</b>
+    </p>
+</body>
