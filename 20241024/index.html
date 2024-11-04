@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>05-第五次课</title>
+    <script>
+        function addRecord(){
+            if(document.getElementById("studentNumber").value == "")
+            {
+                console.info("studentNumber or reasonAmount is null. studentNumber = " + document.getElementById("studentNumber").value)
+                alert("学号存在空值，请检查")
+            } else {
+                studentNumberToText = document.getElementById("studentNumber").value
+                if(Number.isNaN(Math.floor(document.getElementById("studentNumber").value)))
+                {
+                    console.info("studentNumber is not a vaild number. studentNumber = " + document.getElementById("studentNumber").value)
+                    alert("学号不合法，请检查")
+                }
+                else
+                {
+                    TS = new Date() //TimeSource
+                    timeString = TS.getFullYear() + '-' + TS.getMonth() + '-' + TS.getDate() + ' ' + TS.getHours() + ':' + TS.getMinutes() + ':' + TS.getSeconds()
+                    document.getElementById("output").innerHTML += '学号：' + document.getElementById("studentNumber").value + '；签到时间：' + timeString + '。\<br\>'
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <form>
+        学号：
+        <input type="text" id="studentNumber">
+        <button type="button" onclick="addRecord()">confirm</button>
+    </form>
+    <p>
+        <b>签到显示区域</b>
+        <div id="output"></div>
+    </p>
+</body>
