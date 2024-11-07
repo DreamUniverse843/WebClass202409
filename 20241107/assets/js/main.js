@@ -91,7 +91,7 @@ var settings = {
 	};
 
 	/**
-	 * Custom banner slider for Slate.
+	 * 滑动行为的自定义控制。返回的为 JQuery 对象。
 	 * @return {jQuery} jQuery object.
 	 */
 	$.fn._slider = function (options) {
@@ -138,7 +138,7 @@ var settings = {
 			lastPos = pos;
 			pos = x;
 
-			// 若非前台要显示的图片，则隐藏最后一张图片.
+			// 若非前台要显示的图片，则隐藏.
 			slides[lastPos].removeClass('top');
 			if (options.indicators)
 				indicators[lastPos].removeClass('visible');
@@ -148,7 +148,7 @@ var settings = {
 			if (options.indicators)
 				indicators[pos].addClass('visible');
 
-			// 隐藏后稍等一段时间。
+			// 隐藏后，按所设置的时间等待，直至重新出现。
 			window.setTimeout(function () {
 
 				slides[lastPos].addClass('instant').removeClass('visible');
@@ -245,7 +245,7 @@ var settings = {
 			}, 100);
 		});
 
-		// Prioritize "important" elements on medium.
+		// 将每个图片对应的文本做居中处理。
 		skel.on('+medium -medium', function () {
 			$.prioritize(
 				'.important\\28 medium\\29',
@@ -253,10 +253,10 @@ var settings = {
 			);
 		});
 
-		// Banner.
+		// 滑动
 		$banner._slider(settings.banner);
 
-		// Menu.
+		// 菜单行为配置。
 		$('#menu')
 			.append('<a href="#menu" class="close"></a>')
 			.appendTo($body)
