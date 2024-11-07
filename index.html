@@ -7,6 +7,7 @@
   <script>
     var classTotal = 7
     var GithubRepo = "/WebClass202409"
+    var LocalRepo = "/space/202311590150"
     function getGithubLink() {
       if (String(document.getElementById("classgroup").getAttribute("isLocal")) === "Remote")
       {
@@ -31,15 +32,13 @@
         }
       }
     }
-    function removeGithubLink() {
+    function getLocalLink() {
       if (String(document.getElementById("classgroup").getAttribute("isLocal")) === "Local")
       {
-        console.info("All links has been replaced to Local Server.\n当前登录方式已设置为：校园网")
-        alert("All links has been replaced to Local Server.\n当前登录方式已设置为：校园网")
+        console.info("All links has been replaced to Local Server.\n当前登录方式已设置为：本地模式")
+        alert("All links has been replaced to Local Server.\n当前登录方式已设置为：本地模式")
       }
       else {
-        document.getElementById("classgroup").setAttribute("isLocal", "Local")
-        document.getElementById("classgroupView").innerHTML = "校园网"
         for (i = 1; i <= classTotal; i++) {
           if (i < 10) {
             var textID = "class0" + String(i)
@@ -49,9 +48,43 @@
           var baseURL = document.getElementById(textID).getAttribute("href")
           console.info("baseURL:" + baseURL)
           console.info("length of baseurl is " + baseURL.length)
-          document.getElementById(textID).setAttribute("href", baseURL.slice(GithubRepo.length, ))
-          document.getElementById(textID).setAttribute("value", 0)
-          console.info("updatedURL:" + baseURL.slice(GithubRepo.length + 1, - 1))
+          if(String(document.getElementById("classgroup").getAttribute("isLocal")) === "Github")
+          {
+            document.getElementById(textID).setAttribute("href", baseURL.slice(GithubRepo.length, ))
+            document.getElementById(textID).setAttribute("value", 0)
+            console.info("updatedURL:" + baseURL.slice(GithubRepo.length + 1, - 1))
+          } else {
+            document.getElementById(textID).setAttribute("href", baseURL.slice(LocalRepo.length, ))
+            document.getElementById(textID).setAttribute("value", 0)
+            console.info("updatedURL:" + baseURL.slice(LocalRepo.length + 1, - 1))
+          }
+          
+        }
+        document.getElementById("classgroup").setAttribute("isLocal", "Local")
+        document.getElementById("classgroupView").innerHTML = "本地模式"
+      }
+    }
+    function getSchoolLink() {
+      if (String(document.getElementById("classgroup").getAttribute("isLocal")) === "School")
+      {
+        console.info("All links has been replaced to School Server.\n当前登录方式已设置为：校园网")
+        alert("All links has been replaced to School Server.\n当前登录方式已设置为：校园网")
+      }
+      else {
+        document.getElementById("classgroup").setAttribute("isLocal", "School")
+        document.getElementById("classgroupView").innerHTML = "校园网"
+        for (i = 1; i <= classTotal; i++) {
+          if (i < 10) {
+            var textID = "class0" + String(i)
+
+          }
+          else var textID = "class" + String(i)
+          console.info("Replacing " + textID)
+          var baseURL = document.getElementById(textID).getAttribute("href")
+          console.info("baseURL:" + baseURL)
+          document.getElementById(textID).setAttribute("href", LocalRepo + baseURL)
+          document.getElementById(textID).setAttribute("value", 1)
+          console.info("updatedURL:" + LocalRepo + baseURL)
         }
       }
     }
@@ -69,8 +102,11 @@
   <form>
     请选择登录方式:
     <input type="radio" name="routeradio" value="Ext" id="GithubButton" onclick="getGithubLink()" />Github
-    <input type="radio" name="routeradio" value="Int" id="CampusButton" onclick="removeGithubLink()" />校园网
-    当前登录方式为: <b id="classgroupView" isLocal="Local">校园网</b>
+    <input type="radio" name="routeradio" value="Int" id="CampusButton" onclick="getSchoolLink()" />校园网
+    <input type="radio" name="routeradio" value="Int" id="LocalButton" onclick="getLocalLink()" />本地模式
+    当前登录方式为: <b id="classgroupView" isLocal="Local">本地模式</b>
+    <br />
+    切换登录方式前请务必选择一次“本地模式”再切换！否则会出错！
   </form>
   </p>
   <p id="classgroup" isLocal="Local">
