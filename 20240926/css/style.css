@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+a {
+    color: black;
+    font-family: "KaiTi";
+    font-size: large
+}
+
+h1 {
+    color: blueviolet;
+    text-align: center;
+    font-family: "KaiTi";
+    font-size: xx-large
+}
+
+#provision {
+    color: rgb(0, 200, 0);
+    font-family: "KaiTi";
+    font-size: x-large
+}
+
+.introduction {
+    color: rgb(200, 0, 200);
+    font-family: "KaiTi";
+    font-size: xx-large
+}
+
+.quote {
+    color: gray;
+    font-weight: bold;
+    font-size: medium;
+    text-align: right;
+
+}
+
+p {
+    color: black;
+    font-family: "KaiTi";
+    font-size: large
+}
