@@ -27,3 +27,39 @@
     z-index: 2;
     color: rgb(239, 91, 91);
 }
+
+ul.no-bullets {
+    list-style-type: none;
+}
+
+a {
+    color: red;
+    background-color: palevioletred;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    padding: 10px 30px 8px;
+    margin: 0 4px;
+    border: 10px;
+    float: left;
+    font-size: x-large;
+}
+
+a:link {
+    color: blue
+}
+
+a:visited {
+    color: aqua
+}
+
+a:hover {
+    color: red;
+    position: relative;
+    right: 2px;
+    top: 3px;
+}
+
+a:active {
+    color: white
+}
