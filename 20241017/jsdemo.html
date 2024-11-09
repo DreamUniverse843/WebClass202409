@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Javascript 使用样例</title>
+    <script>
+        (function(){
+            alert('页面加载完成！')
+        })
+        function displayDate() {
+            alert('当前时间为 ' + Date())
+        }
+    </script>
+</head>
+
+<body>
+    <p>
+        说明区域
+        <br />
+        本区域展示以下 JavaScript 事件：
+        <br />
+        1. Onclick：点击按钮时，弹窗显示当前时间。
+        <br />
+        2. OnMouseOver：当鼠标停留在“=”上时，显示计算结果。
+        <br />
+        3. OnLoad：页面完成加载时弹窗提示“页面加载完成”。
+    </p>
+    <p>
+        测试区域
+        <br />
+        <button onclick="displayDate()">时间是？</button>
+        <br />
+        1+1<a onmouseover="calculate()">=</a>？
+    </p>
+</body>
