@@ -4,11 +4,15 @@
     <meta charset="UTF-8" />
     <title>Javascript 使用样例</title>
     <script>
-        (function(){
-            alert('页面加载完成！')
-        })
+        window.addEventListener("load", (event) => {
+            alert('页面加载完成！');
+            console.log("page is fully loaded");
+        });
         function displayDate() {
-            alert('当前时间为 ' + Date())
+            alert('当前时间为 ' + Date());
+        }
+        function calculate() {
+            alert('1+1=2');
         }
     </script>
 </head>
